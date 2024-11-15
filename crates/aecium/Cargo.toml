@@ -1,0 +1,6 @@
+[package]
+name = "aecium"
+version = "0.0.0"
+license = "MIT"
+description = "Experimental alternative Rust frontend."
+edition = "2021"

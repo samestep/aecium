@@ -1,2 +1,3 @@
-# aecium
+# Aecium
+
 Experimental alternative Rust frontend.
