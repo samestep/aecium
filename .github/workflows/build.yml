@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - run: cargo run crates/aecium/src/main.rs
+      - run: cargo run -- --edition 2021 crates/aecium/src/main.rs

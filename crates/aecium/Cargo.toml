@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "4", features = ["derive"] }
-logos = "0.14"
+ra_ap_parser = "0.0.248"
