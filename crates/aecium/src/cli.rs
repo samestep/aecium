@@ -85,16 +85,26 @@ fn cli_result() -> Result<(), ExitCode> {
         parsing += t_parse;
         parse_output_steps += output.iter().count();
     }
+
     println!();
     println!("{n} × lex     = {}", duration_string(lexing));
     println!("{n} × convert = {}", duration_string(converting));
     println!("{n} × parse   = {}", duration_string(parsing));
+
     println!();
     println!("{bytes} bytes");
     println!("{bytes_trivia} whitespace or comment bytes");
     println!("{tokens} tokens");
     println!("{tokens_trivia} whitespace or comment tokens");
     println!("{parse_output_steps} parse output steps");
+
+    println!();
+    let total = lexing + converting + parsing;
+    let mb_s = (((n * bytes) as f64) / 1_000_000.) / total.as_secs_f64();
+    let mt_s = (((n * (tokens - tokens_trivia)) as f64) / 1_000_000.) / total.as_secs_f64();
+    println!("bytes:  {mb_s:.3} M/s     (including trivia)",);
+    println!("tokens: {mt_s:.3} M/s (not including trivia)");
+
     Ok(())
 }
 
