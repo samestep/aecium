@@ -7,4 +7,7 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "4", features = ["derive"] }
+derive-rustc-index = { path = "../derive-rustc-index" }
+indexmap = "2"
 ra_ap_parser = "0.0.248"
+ra-ap-rustc_index = "0.86"
