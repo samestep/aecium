@@ -19,12 +19,13 @@ This is an early-stage research project to investigate how much faster the Rust 
 
 ## Related
 
-See [Chandler Carruth's CppNow 2023 talk][modernizing compiler design for carbon's toolchain] about the [Carbon][] compiler.
+See [Chandler Carruth's CppNow 2023 talk][modernizing compiler design for carbon's toolchain] about the [Carbon][] compiler, and [Andrew Kelley's talk][a practical guide to applying data-oriented design] about the [Zig][] compiler.
 
 ## License
 
 Aecium is licensed under the [MIT License](LICENSE).
 
+[a practical guide to applying data-oriented design]: https://youtu.be/IroPQ150F6c
 [carbon]: https://github.com/carbon-language/carbon-lang
 [cargo check]: https://doc.rust-lang.org/cargo/commands/cargo-check.html
 [edition]: https://doc.rust-lang.org/stable/edition-guide/
@@ -38,3 +39,4 @@ Aecium is licensed under the [MIT License](LICENSE).
 [nnethercote 2023-08-25]: https://nnethercote.github.io/2023/08/25/how-to-speed-up-the-rust-compiler-in-august-2023.html
 [nnethercote 2024-03-06]: https://nnethercote.github.io/2024/03/06/how-to-speed-up-the-rust-compiler-in-march-2024.html
 [rust-analyzer]: https://rust-analyzer.github.io/
+[zig]: https://ziglang.org/
