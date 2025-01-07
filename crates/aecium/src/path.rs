@@ -9,8 +9,8 @@ use crate::name::Name;
 pub struct Path(u32);
 
 struct PathData {
-    stem: Name,
     parent: Path,
+    stem: Name,
 }
 
 pub struct Paths {
@@ -33,7 +33,7 @@ impl Paths {
         Path(0)
     }
 
-    fn stem(&self, path: Path) -> Option<Name> {
+    pub fn stem(&self, path: Path) -> Option<Name> {
         let data = &self.data[path];
         if data.parent == path {
             None
@@ -42,7 +42,7 @@ impl Paths {
         }
     }
 
-    fn parent(&self, path: Path) -> Option<Path> {
+    pub fn parent(&self, path: Path) -> Option<Path> {
         let data = &self.data[path];
         if data.parent == path {
             None
@@ -51,7 +51,10 @@ impl Paths {
         }
     }
 
-    pub fn child(&mut self, _: Path, _: Name) -> Path {
-        todo!()
+    pub fn child(&mut self, parent: Path, stem: Name) -> Path {
+        *self
+            .children
+            .entry((parent, stem))
+            .or_insert_with(|| self.data.push(PathData { parent, stem }))
     }
 }

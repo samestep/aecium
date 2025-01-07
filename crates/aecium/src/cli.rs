@@ -15,8 +15,7 @@ struct Cli {
 
 fn cli_result() -> Result<(), ExitCode> {
     let args = Cli::parse();
-    let mut tree = Tree::new(args.edition);
-    tree.root(&args.root).map_err(|e| {
+    let mut tree = Tree::new(args.edition, &args.root).map_err(|e| {
         eprintln!("failed to read crate root: {e}");
         ExitCode::FAILURE
     })?;
@@ -24,6 +23,7 @@ fn cli_result() -> Result<(), ExitCode> {
         eprintln!("failed to expand crate: {e}");
         ExitCode::FAILURE
     })?;
+    tree.print();
     Ok(())
 }
 

@@ -1,24 +1,38 @@
 use ra_ap_parser::SyntaxKind;
 
 pub trait Encodable {
-    fn encode(&self, data: &mut Vec<u8>);
+    fn push(self, data: &mut Vec<u8>);
+
+    fn write(self, data: &mut [u8]);
 }
 
 impl Encodable for u16 {
-    fn encode(&self, data: &mut Vec<u8>) {
+    fn push(self, data: &mut Vec<u8>) {
         data.extend_from_slice(&self.to_le_bytes());
+    }
+
+    fn write(self, data: &mut [u8]) {
+        data[..2].copy_from_slice(&self.to_le_bytes());
     }
 }
 
 impl Encodable for u32 {
-    fn encode(&self, data: &mut Vec<u8>) {
+    fn push(self, data: &mut Vec<u8>) {
         data.extend_from_slice(&self.to_le_bytes());
+    }
+
+    fn write(self, data: &mut [u8]) {
+        data[..4].copy_from_slice(&self.to_le_bytes());
     }
 }
 
 impl Encodable for SyntaxKind {
-    fn encode(&self, data: &mut Vec<u8>) {
-        u16::from(*self).encode(data);
+    fn push(self, data: &mut Vec<u8>) {
+        u16::from(self).push(data);
+    }
+
+    fn write(self, data: &mut [u8]) {
+        u16::from(self).write(data);
     }
 }
 

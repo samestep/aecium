@@ -15,8 +15,12 @@ struct FilenameLoc(u32);
 pub struct SourceLoc(u32);
 
 impl Encodable for SourceLoc {
-    fn encode(&self, data: &mut Vec<u8>) {
-        self.0.encode(data);
+    fn push(self, data: &mut Vec<u8>) {
+        self.0.push(data);
+    }
+
+    fn write(self, data: &mut [u8]) {
+        self.0.write(data);
     }
 }
 
